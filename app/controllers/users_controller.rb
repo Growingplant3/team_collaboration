@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  def home
+  end
   # GET /users
   # GET /users.json
   def index
@@ -14,6 +16,9 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
+    if logged_in?
+      redirect_to @user
+    end
     @user = User.new
   end
 
