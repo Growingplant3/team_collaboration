@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    if params[:id].to_i != current_user.id
+    if params[:id].to_i != current_user&.id
       redirect_to root_path
     end
   end
