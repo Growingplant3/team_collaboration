@@ -12,12 +12,15 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    if params[:id].to_i != current_user.id
+      redirect_to root_path
+    end
   end
 
   # GET /users/new
   def new
     if logged_in?
-      redirect_to @user
+      redirect_to user_path(@current_user.id)
     end
     @user = User.new
   end
